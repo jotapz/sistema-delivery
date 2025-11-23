@@ -4,13 +4,13 @@ Um sistema completo de delivery de comida desenvolvido para gerenciar restaurant
 
 ## 🛠️ Tecnologias Utilizadas
 
-### Frontend (Client-side)
+### Frontend
 * **React + Vite**: Framework para construção de interfaces rápidas e reativas.
 * **Tailwind CSS**: Estilização moderna e responsiva.
 * **Axios**: Cliente HTTP para comunicação com o Backend.
 * **React Router Dom**: Gerenciamento de rotas e navegação (SPA).
 
-### Backend (Server-side)
+### Backend
 * **Node.js**: Ambiente de execução JavaScript.
 * **Express**: Framework para criação da API REST.
 * **MySQL (mysql2)**: Banco de dados relacional.
