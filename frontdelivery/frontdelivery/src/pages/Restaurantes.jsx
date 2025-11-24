@@ -151,7 +151,7 @@ function Restaurantes() {
                     <p className="text-gray-600 flex items-center gap-2 mt-2"><span className="text-lg">📞</span> {restaurante.telefone || "Não informado"}</p>
                 </div>
                 
-                {/* Botões de Ação - ESTILIZAÇÃO IGUAL AO CLIENTE */}
+                {/* aqui deixei igual o botao do cliente pq tava diferente*/}
                 <div className="mt-6 flex justify-end gap-3 border-t pt-4">
                   <button 
                     onClick={() => editarRestaurante(restaurante)}

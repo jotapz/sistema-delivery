@@ -140,7 +140,7 @@ function Pedidos() {
                                     <p className="text-xs text-gray-500 mt-1">📅 {new Date(pedido.data_hora).toLocaleString('pt-BR')}</p>
                                 </div>
 
-                                {/* === AQUI: Exibição dos Itens === */}
+                                {/*aqui vai mostrar os itens que foram feitos no pedido!!!!!*/}
                                 <div className="mt-4 bg-purple-50 p-3 rounded-lg border border-purple-100">
                                     <p className="text-sm text-gray-700 font-bold">🛒 Itens:</p>
                                     <p className="text-gray-600 text-sm mt-1">
