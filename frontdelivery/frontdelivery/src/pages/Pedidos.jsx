@@ -63,8 +63,8 @@ function Pedidos() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-indigo-50 p-8">
-      <h1 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">🛵 Gerenciar Pedidos</h1>
+    <div className="min-h-screen bg-gradient-to-b from-purple-600 via-purple-100 to-purple-200 p-8">
+      <h1 className="text-4xl font-black text-center mb-12 text-white">🛵 Gerenciar Pedidos</h1>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
         <div className="lg:col-span-2 bg-white p-8 rounded-xl shadow-lg border-t-4 border-purple-500">

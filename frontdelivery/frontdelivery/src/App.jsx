@@ -8,7 +8,7 @@ import Pedidos from './pages/Pedidos';
 function App() {
   return (
     <BrowserRouter>
-      {/* A Navbar fica fora das Routes, para aparecer em TODAS as páginas */}
+      {}
       <Navbar />
 
       <Routes>

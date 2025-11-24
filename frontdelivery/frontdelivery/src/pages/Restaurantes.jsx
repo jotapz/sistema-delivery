@@ -95,8 +95,8 @@ function Restaurantes() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-indigo-50 p-8">
-      <h1 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+    <div className="min-h-screen bg-gradient-to-b from-purple-600 via-purple-100 to-purple-200 p-8">
+      <h1 className="text-4xl font-black text-center mb-12 text-white">
         🍽️ Restaurantes
       </h1>
 
