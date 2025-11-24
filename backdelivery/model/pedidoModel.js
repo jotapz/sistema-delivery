@@ -8,7 +8,6 @@ export const createPedidoService = async (dadosPedido) => {
     `;
     
     const [resultPedido] = await db.query(sqlPedido, [dadosPedido.cliente_id, dadosPedido.restaurante_id]);
-    
     const novoPedidoId = resultPedido.insertId;
 
     for (const item of dadosPedido.itens) {
@@ -24,17 +23,23 @@ export const createPedidoService = async (dadosPedido) => {
 
 export const findAllPedidosService = async () => {
     const sql = `
-        SELECT p.pedido_id, p.data_hora, p.status_pedido, 
-               c.nome AS nome_cliente, r.nome AS nome_restaurante
+        SELECT 
+            p.pedido_id, 
+            p.data_hora, 
+            p.status_pedido, 
+            c.nome AS nome_cliente, 
+            r.nome AS nome_restaurante,
+            GROUP_CONCAT(i.quantidade, 'x ', i.descricao SEPARATOR ', ') AS itens_lista
         FROM Pedido p
         JOIN Cliente c ON p.cliente_id = c.cliente_id
         JOIN Restaurante r ON p.restaurante_id = r.restaurante_id
+        LEFT JOIN ItemPedido i ON p.pedido_id = i.pedido_id
+        GROUP BY p.pedido_id
         ORDER BY p.pedido_id DESC
     `;
     const [rows] = await db.query(sql);
     return rows;
 };
-
 
 export const updateStatusService = async (id, novoStatus) => {
     const sql = "UPDATE Pedido SET status_pedido = ? WHERE pedido_id = ?";

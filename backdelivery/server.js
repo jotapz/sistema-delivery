@@ -21,5 +21,5 @@ app.use("/pedido", pedidoRoutes);
 
 
 app.listen(port, () => {
-    console.log('Ta rodando no localhost ${port}');
+    console.log(`Ta rodando no localhost ${port}`);
 });
