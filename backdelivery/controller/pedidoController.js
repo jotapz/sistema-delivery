@@ -35,7 +35,7 @@ export const getAllPedidos = async (req, res) => {
 export const updateStatus = async (req, res) => {
     try {
         const { id } = req.params;
-        const { status } = req.body; // Vai receber { "status": "A Caminho" }
+        const { status } = req.body; 
 
         const alterou = await updateStatusService(id, status);
 

@@ -4,8 +4,16 @@ export const createCliente = async (req, res) => {
     try {
         const { nome, telefone, endereco } = req.body;
 
-        if (!nome) {
-            return res.status(400).json({ message: "O nome é obrigatório!" });
+        if (!nome || !telefone || !endereco) {
+            return res.status(400).json({ message: "Todos os campos são obrigatórios!" });
+        }
+
+        if(/[0-9]/.test(nome)){
+            return res.status(400).json({message: "Erro: o nome não pode conter números!"})
+        }
+
+        if(/[a-zA-Z]/.test(nome)){
+            return res.status(400).json ({message: "Erro: o telefone não pode conter letras!"})
         }
 
         const novoId = await createService(nome, telefone, endereco);
@@ -50,6 +58,14 @@ export const updateCliente = async (req, res) => {
     try {
         const { id } = req.params;
         const { nome, telefone, endereco } = req.body;
+
+        if(/[0-9]/.test(nome)){
+            return res.status(400).json({message: "Erro: nome não pode conter números!"})
+        }
+
+        if(/[a-zA-Z]/.test(telefone)){
+            return res.status(400).json({message: "Erro: telefone não pode conter letras!"})
+        }
 
         const alterou = await updateService(id, nome, telefone, endereco);
 

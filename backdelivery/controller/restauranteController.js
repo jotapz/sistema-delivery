@@ -5,8 +5,20 @@ export const createRestaurante = async (req, res) => {
     try {
         const { nome, tipo_cozinha, telefone } = req.body;
 
-        if (!nome) {
-            return res.status(400).json({ message: "O nome é obrigatório!" });
+        if (!nome || !telefone || !tipo_cozinha) {
+            return res.status(400).json({ message: "Os campos são obrigatórios!" });
+        }
+
+        // if(/[0-9]/.test(nome)){
+        //     return res.status(400).json({ message: "Erro: não pode ter número no nome!"})
+        // }
+
+        if(/[a-zA-Z]/.test(telefone)){
+            return res.status(400).json({ message: "Erro: não pode ter letra no telefone!"})
+        }
+
+        if(/[0-9]/.test(tipo_cozinha)){
+            return res.status(400).json({ message: "Erro: não pode ter número no tipo de cozinha"})
         }
 
         const novoId = await createService(nome, tipo_cozinha, telefone);
@@ -54,6 +66,14 @@ export const updateRestaurante = async (req, res) => {
     try {
         const { id } = req.params;
         const { nome, tipo_cozinha, telefone } = req.body;
+
+        if(/[a-zA-Z]/.test(telefone)){
+            return res.status(400).json({ message: "Erro: não pode ter letras no telefone!"})
+        }
+
+        if(/[0-9]/.test(tipo_cozinha)){
+            return res.status(400).json({ message: "Erro: não pode ter número no tipo de cozinha!"})
+        }
 
         const alterou = await updateService(id, nome, tipo_cozinha, telefone);
 

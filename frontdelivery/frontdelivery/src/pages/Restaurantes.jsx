@@ -28,10 +28,29 @@ function Restaurantes() {
   const cadastrarRestaurante = (event) => {
     event.preventDefault()
 
-    if (!nome) {
-      alert("Por favor, preencha o nome do restaurante!")
+    if (!nome || !tipoCozinha || !telefone) {
+      alert("Por favor, preencha todos os campos do restaurante!")
       return
     }
+
+
+    // comentei essa parte pq existem restaurantes que possuem numero no nome
+
+    // if(/[0-9]/.test(nome)){
+    //   alert("Atenção: o nome não pode conter números!")
+    //   return
+    // }
+
+    if(/[a-zA-Z]/.test(telefone)){
+      alert("Atenção: o telefone não pode conter letras!")
+      return
+    }
+
+    if(/[0-9]/.test(tipoCozinha)){
+      alert("Atenção: tipo cozinha não pode conter números!")
+      return
+    }
+
 
     if (editando) {
       axios.put(`http://localhost:5001/restaurante/${editando}`, {
@@ -151,7 +170,6 @@ function Restaurantes() {
                     <p className="text-gray-600 flex items-center gap-2 mt-2"><span className="text-lg">📞</span> {restaurante.telefone || "Não informado"}</p>
                 </div>
                 
-                {/* aqui deixei igual o botao do cliente pq tava diferente*/}
                 <div className="mt-6 flex justify-end gap-3 border-t pt-4">
                   <button 
                     onClick={() => editarRestaurante(restaurante)}

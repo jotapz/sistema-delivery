@@ -22,6 +22,16 @@ function Clientes() {
   const salvarCliente = (event) => {
     event.preventDefault()
 
+    if (/[0-9]/.test(nome)) {
+        alert("Atenção: O Nome não pode conter números!")
+        return
+    }
+
+    if (/[a-zA-Z]/.test(telefone)) {
+        alert("Atenção: O Telefone não pode conter letras!")
+        return
+    }
+
     if (idEmEdicao) {
         axios.put(`http://localhost:5001/cliente/${idEmEdicao}`, {
             nome, telefone, endereco
@@ -94,18 +104,15 @@ function Clientes() {
                 <input 
                   type="text" 
                   placeholder="Nome Completo" 
-                  className={`w-full p-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition font-semibold ${idEmEdicao ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-white'}`}
+                  className={`w-full p-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition font-semibold bg-white}`}
                   value={nome} 
-                  onChange={e => setNome(e.target.value)} 
-                  required
-                  disabled={!!idEmEdicao}
-                />
-                {idEmEdicao && <span className="text-xs text-red-500 font-bold ml-1">O nome não pode ser alterado</span>}
+                  onChange={e => setNome(e.target.value)} required
+                  />
             </div>
 
             <input 
               type="text" placeholder="Telefone" className="p-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition font-semibold"
-              value={telefone} onChange={e => setTelefone(e.target.value)}
+              value={telefone} onChange={e => setTelefone(e.target.value)} required
             />
             <input 
               type="text" placeholder="Endereço Completo" className="p-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition font-semibold"
