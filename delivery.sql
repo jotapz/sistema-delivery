@@ -1,6 +1,7 @@
 CREATE DATABASE delivery;
 USE delivery;
 
+-- Criar tabela Cliente
 CREATE TABLE Cliente(
     cliente_id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
@@ -8,6 +9,7 @@ CREATE TABLE Cliente(
     endereco VARCHAR(100)
 );
 
+-- Criar tabela Restaurante
 CREATE TABLE Restaurante(
     restaurante_id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
@@ -15,6 +17,7 @@ CREATE TABLE Restaurante(
     telefone VARCHAR(100)
 );
 
+-- Criar tabela Pedido
 CREATE TABLE Pedido (
     pedido_id INT PRIMARY KEY AUTO_INCREMENT,
     cliente_id INT,
@@ -25,6 +28,7 @@ CREATE TABLE Pedido (
     FOREIGN KEY (restaurante_id) REFERENCES Restaurante(restaurante_id) ON DELETE CASCADE
 );
 
+-- Criar Tabela ItemPedido
 CREATE TABLE ItemPedido(
     item_id INT PRIMARY KEY AUTO_INCREMENT,
     pedido_id INT,
@@ -35,7 +39,19 @@ CREATE TABLE ItemPedido(
 );
 
 
+-- Tabela para criação de funcionário
+-- Pode criar um funcionario por script INSERT INTO ou EndPoints no Postman
+CREATE TABLE Funcionario (
+    funcionario_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100)  NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(100) NOT NULL
+);
+
+
+-- Ver as tabelas
 SELECT*FROM Cliente;
 SELECT*FROM Restaurante;
 SELECT*FROM Pedido;
 SELECT*FROM ItemPedido;
+SELECT*FROM Funcionario;
